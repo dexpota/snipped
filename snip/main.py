@@ -2,6 +2,7 @@
 
 Usage: 
     snip <snippet>
+    snip --info <snippet>
     snip --edit <snippet>
     snip --list
     snip --version|-v
@@ -10,6 +11,7 @@ Usage:
 
 from docopt import docopt
 import itertools
+import yaml
 import logging
 import os
 
@@ -40,6 +42,24 @@ def main():
                 full_path = os.path.join(root, file)
                 relative_path = os.path.relpath(full_path, snippets_home_path)
                 print(relative_path)
+
+    elif arguments["--info"]:
+        # prints some info about the selected snippet
+        snippet = arguments["<snippet>"]
+
+        full_path = os.path.join(snippets_home_path, snippet)
+        logging.debug("snippet full path: {}".format(full_path))
+
+        if os.path.isfile(full_path):
+            with open(full_path, "r") as fp:
+                header_generator = yaml.load_all(fp.read())
+
+            yaml_header = next(header_generator)
+            header_generator.close()
+
+            print(yaml_header)
+        else:
+            logging.error("snippet doesn't exist: {}".format(snippet))
 
     elif arguments["--edit"]:
         # edit the snippet
