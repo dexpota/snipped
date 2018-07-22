@@ -14,6 +14,10 @@ import itertools
 import yaml
 import logging
 import os
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import TerminalFormatter
+import re
 
 
 def main():
@@ -70,8 +74,26 @@ def main():
         # show the snippet
         snippet = arguments["<snippet>"]
         logging.debug("snippet: {}".format(snippet))
-        raise NotImplementedError("print functionality is not yet implemented.")
-    
+
+        full_path = os.path.join(snippets_home_path, snippet)
+        logging.debug("snippet full path: {}".format(full_path))
+
+        with open(full_path, "r") as fp:
+            snippet_content = fp.read()
+            snippet_content = snippet_content.strip()
+            splitter = re.compile(r'^-{3,}$', re.MULTILINE)
+            _, metadata, content = splitter.split(snippet_content, 2)
+
+            header_generator = yaml.load_all(metadata)
+
+        yaml_header = next(header_generator)
+        header_generator.close()
+
+        language = yaml_header["language"]
+
+        lexer = get_lexer_by_name(language)
+        print(highlight(content, lexer, TerminalFormatter()))
+
 
 if __name__ == "__main__":
     main()
