@@ -8,7 +8,7 @@ Usage:
     snip --version|-v
 
 """
-
+from .snippet import parse_snippet
 from docopt import docopt
 import itertools
 import yaml
@@ -78,17 +78,7 @@ def main():
         full_path = os.path.join(snippets_home_path, snippet)
         logging.debug("snippet full path: {}".format(full_path))
 
-        with open(full_path, "r") as fp:
-            snippet_content = fp.read()
-            snippet_content = snippet_content.strip()
-            splitter = re.compile(r'^-{3,}$', re.MULTILINE)
-            _, metadata, content = splitter.split(snippet_content, 2)
-
-            header_generator = yaml.load_all(metadata)
-
-        yaml_header = next(header_generator)
-        header_generator.close()
-
+        yaml_header, content = parse_snippet(full_path)
         language = yaml_header["language"]
 
         lexer = get_lexer_by_name(language)
