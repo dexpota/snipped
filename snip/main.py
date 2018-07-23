@@ -9,6 +9,7 @@ Usage:
 
 """
 from .snippet import parse_snippet
+from .configuration import get_snippets_home_path
 from docopt import docopt
 import logging
 import os
@@ -18,14 +19,12 @@ from pygments.formatters import TerminalFormatter
 
 
 def main():
-    arguments = docopt(__doc__)
     logging.basicConfig(level=logging.DEBUG)
 
+    arguments = docopt(__doc__)
     logging.debug("arguments: {}".format(arguments))
 
-    snippets_home_path = os.environ.get("SNIPPETS_DIR", "~/.snippets")
-    snippets_home_path = os.path.expandvars(snippets_home_path)
-    snippets_home_path = os.path.expanduser(snippets_home_path)
+    snippets_home_path = get_snippets_home_path()
     logging.debug("root directory: {}".format(snippets_home_path))
 
     if arguments["--list"]:
