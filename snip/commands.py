@@ -1,8 +1,5 @@
+from .utilities import highlight
 import logging
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters import TerminalFormatter
-
 
 def list_snippets(repository):
     # list all snippets
@@ -15,8 +12,7 @@ def show_snippet(repository, snippet):
     snippet = repository.get_snippet(snippet)
     language = snippet.metadata["language"]
 
-    lexer = get_lexer_by_name(language)
-    print(highlight(snippet.snippet, lexer, TerminalFormatter()))
+    print(highlight(language, snippet.snippet))
 
 
 def snippet_info(repository, snippet):
