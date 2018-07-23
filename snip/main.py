@@ -10,14 +10,11 @@ Usage:
 """
 from .snippet import parse_snippet
 from docopt import docopt
-import itertools
-import yaml
 import logging
 import os
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import TerminalFormatter
-import re
 
 
 def main():
@@ -54,16 +51,8 @@ def main():
         full_path = os.path.join(snippets_home_path, snippet)
         logging.debug("snippet full path: {}".format(full_path))
 
-        if os.path.isfile(full_path):
-            with open(full_path, "r") as fp:
-                header_generator = yaml.load_all(fp.read())
-
-            yaml_header = next(header_generator)
-            header_generator.close()
-
-            print(yaml_header)
-        else:
-            logging.error("snippet doesn't exist: {}".format(snippet))
+        yaml_header, _ = parse_snippet(full_path)
+        print(yaml_header)
 
     elif arguments["--edit"]:
         # edit the snippet

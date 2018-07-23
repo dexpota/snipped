@@ -1,6 +1,7 @@
 import os
 import yaml
 import re
+import logging
 
 
 def parse_snippet(path):
@@ -14,6 +15,8 @@ def parse_snippet(path):
 
         metadata = yaml.load(metadata_content)
         return metadata, snippet_content
+    else:
+        logging.error("snippet doesn't exist: {}".format(path))
 
 
 class Snippet:
