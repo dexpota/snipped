@@ -6,9 +6,17 @@ import os
 
 
 class LocalRepository(Repository):
+    def create_snippet(self, snippet_id):
+        raise NotImplementedError()
+
     def __init__(self):
         self._root = get_snippets_home_path()
         logging.debug("root directory: {}".format(self._root))
+
+    def get_snippet_local_path(self, snippet_id):
+        local_path = snippet_id
+        path = os.path.join(self._root, local_path)
+        return path
 
     def get_snippet(self, snippet_id):
         local_path = snippet_id

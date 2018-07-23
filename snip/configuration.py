@@ -18,3 +18,7 @@ def get_snippets_home_path():
                           "something wrong with permissions?")
 
     return snippets_home_path
+
+
+def get_snippets_editor():
+    return os.environ.get("SNIPPET_EDITOR") or os.environ.get("VISUAL") or os.environ.get("EDITOR")

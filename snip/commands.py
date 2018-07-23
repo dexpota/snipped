@@ -1,4 +1,5 @@
-from .utilities import highlight
+from .utilities import highlight, open_with_editor
+from .configuration import get_snippets_editor
 import logging
 
 def list_snippets(repository):
@@ -20,7 +21,14 @@ def snippet_info(repository, snippet):
     print(snippet.metadata)
 
 
-def edit_snippet(snippet):
+def edit_snippet(repository, snippet):
     # edit the snippet
     logging.debug("snippet: {}".format(snippet))
-    raise NotImplementedError("edit functionality is not yet implemented.")
+    editor = get_snippets_editor()
+
+    path = repository.get_snippet_local_path(snippet)
+
+    if not editor:
+        logging.error("editor not available.")
+    else:
+        open_with_editor(editor, path)

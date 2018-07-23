@@ -31,7 +31,7 @@ def main():
         snippet_info(repository, snippet)
     elif arguments["--edit"]:
         snippet = arguments["<snippet>"]
-        edit_snippet(snippet)
+        edit_snippet(repository, snippet)
     else:
         # show the snippet
         snippet = arguments["<snippet>"]
