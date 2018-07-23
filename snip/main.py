@@ -9,7 +9,7 @@ Usage:
 
 """
 from .commands import edit_snippet, snippet_info, show_snippet, list_snippets
-from .configuration import get_snippets_home_path
+from .repository.local import LocalRepository
 from docopt import docopt
 import logging
 
@@ -20,23 +20,22 @@ def main():
     arguments = docopt(__doc__)
     logging.debug("arguments: {}".format(arguments))
 
-    snippets_home_path = get_snippets_home_path()
-    logging.debug("root directory: {}".format(snippets_home_path))
+    repository = LocalRepository()
 
     if arguments["--list"]:
         # list all snippets
-        list_snippets(snippets_home_path)
+        list_snippets(repository)
     elif arguments["--info"]:
         # prints some info about the selected snippet
         snippet = arguments["<snippet>"]
-        snippet_info(snippets_home_path, snippet)
+        snippet_info(repository, snippet)
     elif arguments["--edit"]:
         snippet = arguments["<snippet>"]
         edit_snippet(snippet)
     else:
         # show the snippet
         snippet = arguments["<snippet>"]
-        show_snippet(snippets_home_path, snippet)
+        show_snippet(repository, snippet)
 
 
 if __name__ == "__main__":
