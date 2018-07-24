@@ -7,8 +7,10 @@ url = "https://pypi.org/simple"
 docopt = "*"
 pyyaml = "*"
 pygments = "*"
+requests = "*"
 
 [dev-packages]
+pytest = "*"
 
 [requires]
 python_version = "3.5"
