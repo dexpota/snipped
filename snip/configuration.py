@@ -4,7 +4,8 @@ import logging
 
 def get_snippets_home_path():
     snippets_home_path = os.environ.get("SNIPPETS_DIR", "~/.snippets")
-    snippets_home_path = os.path.expanduser(os.path.expandvars(snippets_home_path))
+    snippets_home_path = os.path.expanduser(
+        os.path.expandvars(snippets_home_path))
 
     if not os.path.isdir(snippets_home_path):
         logging.warning("Snippets home directory doesn't exist!")

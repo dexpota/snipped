@@ -2,6 +2,7 @@ from .utilities import highlight, open_with_editor
 from .configuration import get_snippets_editor
 import logging
 
+
 def list_snippets(repository):
     # list all snippets
     for snippet in repository.list():

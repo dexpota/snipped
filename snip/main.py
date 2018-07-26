@@ -1,6 +1,6 @@
 """snip.
 
-Usage: 
+Usage:
     snip <snippet>
     snip --info <snippet>
     snip --edit <snippet>
