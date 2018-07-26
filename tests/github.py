@@ -1,5 +1,7 @@
 from snip.repository.github import GithubRepository
 
+a = 11
+
 
 def test_github():
     repository = GithubRepository("dexpota", ".snippets")

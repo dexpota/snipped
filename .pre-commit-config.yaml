@@ -1,0 +1,10 @@
+repos:
+  - repo: local
+    hooks:
+    - id: coala 
+      name: coala
+      description: This hook runs coala.
+      entry: .pre-commit-scripts/coala.sh
+      language: script
+      types: ["python"]
+

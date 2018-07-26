@@ -1,8 +1,5 @@
-[cli]
-bears = SpaceConsistencyBear
-files = **/*.py
+[apython]
+bears = SpaceConsistencyBear, PEP8Bear
 use_spaces = True
+language = Python
 default_actions = *: ApplyPatchAction
-[python]
-bears = PEP8Bear
-files = **/*.py
