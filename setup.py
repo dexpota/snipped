@@ -13,4 +13,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/dexpota/snip",
     packages=setuptools.find_packages(),
+    entry_points={
+        'console_scripts': [
+            'snip=snip.main:main',
+        ],
+    },
 )
