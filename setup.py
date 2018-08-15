@@ -4,11 +4,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="snip",
-    version="0.1",
+    name="snipped",
+    version="0.1a0",
     author="Fabrizio Destro",
     author_email="destro.fabrizio@gmail.com",
-    description="A small snippet manager.",
+    description="A small snippets manager.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/dexpota/snip",
