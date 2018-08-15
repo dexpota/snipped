@@ -18,4 +18,9 @@ setuptools.setup(
             'snip=snip.main:main',
         ],
     },
+    install_requires=[
+        "docopt",
+        "pyyaml"
+        "pygments"
+        "requests"],
 )
