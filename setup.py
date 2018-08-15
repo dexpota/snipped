@@ -15,7 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     entry_points={
         'console_scripts': [
-            'snip=snip.main:main',
+            'snip=snipped.main:main',
         ],
     },
     install_requires=[
