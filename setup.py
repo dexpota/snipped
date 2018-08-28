@@ -20,7 +20,7 @@ setuptools.setup(
     },
     install_requires=[
         "docopt",
-        "pyyaml"
-        "pygments"
+        "pyyaml",
+        "pygments",
         "requests"],
 )
