@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="snipped",
-    version="0.1a0",
+    version="0.1a1",
     author="Fabrizio Destro",
     author_email="destro.fabrizio@gmail.com",
     description="A small snippets manager.",
