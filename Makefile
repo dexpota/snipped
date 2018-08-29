@@ -6,11 +6,6 @@ PYPI_SERVER = pypitest
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: setup
-setup:
-	pip install pipenv
-	pipenv install --dev --three
-
 .PHONY: test
 test:
 	echo "Hello World!"
@@ -35,3 +30,11 @@ wheel: clean ## Build bdist_wheel distribution
 .PHONY: clean
 clean: ## Remove all artifacts 
 	@echo "+ $@"
+
+requirements-dev.txt: Pipfile.lock ## Generate requirements file for developing from Pipenv.
+	@echo "+ $@"
+	@pipenv lock --requirements > requirements-dev.txt
+
+requirements.txt: ## Generate requirements file from Pipenv
+	@echo "+ $@"
+	@pipenv lock --requirements > requirements.txt
