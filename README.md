@@ -1,3 +1,3 @@
 # snipped
-[![Build Status](http://img.shields.io/travis/dexpota/snipped.svg?style=flat-square)](https://travis-ci.org/dexpota/snipped)
+[![Build Status](http://img.shields.io/travis/com/dexpota/snipped.svg?style=flat-square)](https://travis-ci.com/dexpota/snipped)
 
