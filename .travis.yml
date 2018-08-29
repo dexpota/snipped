@@ -1,0 +1,9 @@
+language: python
+python:
+    - "3"
+env:
+    global:
+        - PIPENV_VENV_IN_PROJECT=1
+        - PIPENV_IGNORE_VIRTUALENVS=1
+install: make setup
+script: make test
