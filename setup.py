@@ -18,6 +18,9 @@ setuptools.setup(
             'snip=snipped.main:main',
         ],
     },
+    classifiers={
+        "Programming Language :: Python :: 3.5"
+    },
     install_requires=[
         "docopt",
         "pyyaml",
