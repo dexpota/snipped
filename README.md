@@ -9,7 +9,14 @@
 
 ## Installation
 
-You can install **snipped** using `pip`.
+You can install the latest released version of **snipped** using `pip`.
 
 `pip install snipped`
 
+Alternativaly you can install it from the source code.
+
+```bash
+git clone git@github.com:dexpota/snipped.git
+cd snipped
+pip install -e .
+```
