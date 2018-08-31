@@ -3,6 +3,5 @@ python:
     - "3.5"
 cache: pip
 install: 
-    - pip install -r requirements-dev.txt 
-    - pip install .
+    - pip install tox-travis 
 script: make test
