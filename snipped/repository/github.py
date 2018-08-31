@@ -82,7 +82,7 @@ class GithubRepository(Repository):
             owner, repository, tree_hash, recursive)
 
         tree_response = json.loads(response.content.decode(response.encoding))
-
+        print(tree_response)
         current_tree = tree_response["tree"]
         current_tree_truncated = tree_response["truncated"]
 

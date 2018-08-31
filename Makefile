@@ -8,7 +8,7 @@ help:
 
 .PHONY: test
 test:
-	@tox
+	@tox -- -s
 
 .PHONY: local-test
 local-test:
