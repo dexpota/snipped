@@ -33,8 +33,8 @@ clean: ## Remove all artifacts
 
 requirements-dev.txt: Pipfile.lock ## Generate requirements file for developing from Pipenv.
 	@echo "+ $@"
-	@pipenv lock --requirements > requirements-dev.txt
+	@pipenv lock --requirements --dev > requirements-dev.txt
 
-requirements.txt: ## Generate requirements file from Pipenv
+requirements.txt: Pipfile.lock ## Generate requirements file from Pipenv
 	@echo "+ $@"
 	@pipenv lock --requirements > requirements.txt
