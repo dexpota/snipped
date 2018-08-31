@@ -1,4 +1,4 @@
-from snip.repository.github import GithubRepository
+from snipped.repository.github import GithubRepository
 
 
 def test_github():

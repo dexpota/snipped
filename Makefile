@@ -8,7 +8,7 @@ help:
 
 .PHONY: test
 test:
-	echo "Hello World!"
+	@tox -- -s
 
 .PHONY: release
 release: sdist wheel clean ## Package and upload release
