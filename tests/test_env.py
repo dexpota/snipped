@@ -1,4 +1,5 @@
 import os
+import pygments
 
 
 def test_env():

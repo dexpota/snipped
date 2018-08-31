@@ -8,7 +8,11 @@ help:
 
 .PHONY: test
 test:
-	@tox -- -s
+	@tox
+
+.PHONY: local-test
+local-test:
+	@tox --skip-missing-interpreters
 
 .PHONY: release
 release: sdist wheel clean ## Package and upload release
