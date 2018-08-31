@@ -22,13 +22,13 @@ release: sdist wheel clean ## Package and upload release
 .PHONY: sdist
 sdist: clean ## Build sdist distribution
 	@echo "+ $@"
-	@python setup.py sdist
+	@pipenv run python setup.py sdist
 	@ls -l dist
 
 .PHONY: wheel
 wheel: clean ## Build bdist_wheel distribution
 	@echo "+ $@"
-	@python setup.py bdist_wheel
+	@pipenv run python setup.py bdist_wheel
 	@ls -l dist
 
 .PHONY: clean

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="snipped",
-    version="0.1a1",
+    version="0.1a2",
     author="Fabrizio Destro",
     author_email="destro.fabrizio@gmail.com",
     description="A small snippets manager.",
@@ -21,6 +21,7 @@ setuptools.setup(
     classifiers={
         "Programming Language :: Python :: 3.5"
     },
+    python_requires='>=3.5',
     install_requires=[
         "docopt",
         "pyyaml",
