@@ -4,8 +4,8 @@
 
 
 [![Build Status](http://img.shields.io/travis/com/dexpota/snipped.svg?style=flat-square)](https://travis-ci.com/dexpota/snipped)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/snipped.svg?style=flat-square)](https://pypi.python.org/pypi/snipped/)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://dexpota.mit-license.org)
-[![Supported Python versions](https://img.shields.io/pypi/pyversions/snipped.svg)](https://pypi.python.org/pypi/snipped/)
 
 ## Installation
 
