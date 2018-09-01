@@ -5,18 +5,47 @@ import json
 import base64
 
 
+class GithubApiException(BaseException):
+    @property
+    def response(self):
+        return self._response
+
+    def __init__(self, response, message):
+        super(GithubApiException, self).__init__(message)
+        self._response = response
+
+
+class RateLimitReached(GithubApiException):
+    def __init__(self, response, message):
+        super(GithubApiException, self).__init__(response, message)
+
+
 class GithubApi:
+    @staticmethod
+    def check_response(response):
+        status_code = response.status_code
+        headers = response.headers
+
+        if (status_code == requests.codes.forbidden
+                and headers is not None and "X-RateLimit-Remaining" in headers
+                and int(response.headers.get("X-RateLimit-Remaining")) == 0):
+            raise RateLimitReached(response, response.json().message)
+        elif response.status_code != requests.codes.ok:
+            raise GithubApiException(response,
+                                     "Response code is {}".format(response.status_code))
+        return response
+
     @staticmethod
     def repository_tree(owner, repository, tree_hash, recursive):
         url = "https://api.github.com/repos/{}/{}/git/trees/{}?recursive={}".format(
             owner, repository, tree_hash, recursive)
-        return requests.get(url)
+        return GithubApi.check_response(requests.get(url))
 
     @staticmethod
     def repository_content(owner, repository, path):
         url = "https://api.github.com/repos/{}/{}/contents/{}".format(
             owner, repository, path)
-        return requests.get(url)
+        return GithubApi.check_response(requests.get(url))
 
 
 class GithubNode:
@@ -82,7 +111,6 @@ class GithubRepository(Repository):
             owner, repository, tree_hash, recursive)
 
         tree_response = json.loads(response.content.decode(response.encoding))
-        print(tree_response)
         current_tree = tree_response["tree"]
         current_tree_truncated = tree_response["truncated"]
 
