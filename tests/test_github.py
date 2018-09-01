@@ -1,8 +1,12 @@
-from snipped.repository.github import GithubRepository
+from snipped.repository.github import GithubRepository, RateLimitReached
 
 
 def test_github():
-    repository = GithubRepository("dexpota", ".snippets")
+    try:
+        repository = GithubRepository("dexpota", ".snippets")
+    except RateLimitReached as r:
+        # When we reach the limit there is nothing we can do except tell the user and wait.
+        return
 
     for snippet_id in repository.list():
         print(snippet_id)
