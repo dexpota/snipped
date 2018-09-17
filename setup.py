@@ -1,11 +1,12 @@
 import setuptools
+import snipped
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="snipped",
-    version="0.1a2",
+    version=snipped.__version__,
     author="Fabrizio Destro",
     author_email="destro.fabrizio@gmail.com",
     description="A small snippets manager.",
