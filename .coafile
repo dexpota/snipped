@@ -1,5 +1,9 @@
-[apython]
+[all]
+default_actions = *: ApplyPatchAction
+non_interactive = True
+no_orig = True
+
+[all.python]
 bears = SpaceConsistencyBear, PEP8Bear
 use_spaces = True
 language = Python
-default_actions = *: ApplyPatchAction

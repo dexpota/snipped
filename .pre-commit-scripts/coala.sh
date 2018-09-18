@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-coala --non-interactive --files $1 
+coala all.python --files $1 
