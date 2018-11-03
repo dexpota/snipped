@@ -29,7 +29,7 @@ class GithubApi:
         if (status_code == requests.codes.forbidden
                 and headers is not None and "X-RateLimit-Remaining" in headers
                 and int(response.headers.get("X-RateLimit-Remaining")) == 0):
-            raise RateLimitReached(response, response.json().message)
+            raise RateLimitReached(response, response.text)
         elif response.status_code != requests.codes.ok:
             raise GithubApiException(response,
                                      "Response code is {}".format(response.status_code))
