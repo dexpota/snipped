@@ -7,7 +7,7 @@ url = "https://pypi.org/simple"
 docopt = "*"
 pyyaml = "*"
 pygments = "*"
-requests = "*"
+requests = ">=2.20.0"
 
 [dev-packages]
 pytest = "*"
@@ -15,4 +15,4 @@ coala-bears = "*"
 tox = "*"
 
 [requires]
-python_version = "3.5"
+python_version = "3.6"
